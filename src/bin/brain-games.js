@@ -1,5 +1,8 @@
-#!/usr/bin/node
-import getName from '../';
+#!/usr/bin/env node
+import { askName, showGreet } from '../index';
 
 console.log('Welcome to the Brain Games!');
-getName();
+
+const name = askName();
+
+showGreet(name);
