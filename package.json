@@ -1,6 +1,6 @@
 {
   "name": "brain-games-grammpozitiva",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "project/src/bin/brain-games.js",
   "scripts": {
@@ -19,8 +19,8 @@
     "brain-games": "dist/bin/brain-games.js"
   },
   "author": "Tatiana Shevchenko",
-  "license": "ISC"
-
-
-
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.7"
+  }
 }
