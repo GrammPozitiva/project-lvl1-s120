@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import * as brainGame from '..'
 
 console.log('Welcome to the Brain Games!');
@@ -21,7 +22,7 @@ const runGameEven = () =>{
       console.log(`Correct!`);
       return iter(brainGame.generateNumber(),count+1)
     }else{
-      console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${brainGame.correctAnswer(number)}".Let's try again, ${name}`);
+      console.log(`"${answerUser}" is wrong answer ;(. Correct answer was "${brainGame.correctAnswer(number)}".Let's try again, ${name}!`);
       return;
     }
 
