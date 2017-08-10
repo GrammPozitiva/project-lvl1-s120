@@ -1,6 +1,6 @@
 {
   "name": "brain-games-grammpozitiva",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Set of mini games from the console",
   "main": "project/src/bin/brain-games.js",
   "scripts": {
@@ -25,7 +25,8 @@
   },
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
-    "brain-even": "dist/bin/brain-even.js"
+    "brain-even": "dist/bin/brain-even.js",
+    "brain-calc": "dist/bin/brain-calc.js"
   },
   "author": "Tatiana Shevchenko",
   "license": "ISC"

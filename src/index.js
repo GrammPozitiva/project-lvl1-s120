@@ -1,20 +1,44 @@
 import readlineSync from 'readline-sync';
 
+
 export const askName = () => readlineSync.question('May I have your name? ');
 
 export const showGreet = (name) => {
   console.log(`Hello, ${name}!`);
 };
-export const showRulesGame = () => {
-  console.log('Answer "yes" if number even otherwise answer "no"');
+export const showRulesGame = (rules) => {
+  console.log(`${rules}`);
 };
-export const isEven = number => number % 2 === 0;
+
 
 export const generateNumber = () => Math.floor(Math.random() * 30);
 
-export const showNumber = (number) => {
-  console.log(`Question:  ${number}`);
+export const showQuestion = (question) => {
+  console.log(`Question:  ${question}`);
 };
 export const askQuestion = () => readlineSync.question('Your answer: ');
 
-export const correctAnswer = number => isEven(number) ? 'yes' : 'no';
+export const runGame = (game) => {
+  console.log('Welcome to the Brain Games!');
+  console.log(game.rules);
+  const name = askName();
+  showGreet(name);
+
+  const iter = (count) => {
+    if (count === 3) {
+      console.log(`Congratulations, ${name}!`);
+      return true;
+    }
+    const data = game.getStepData();
+    showQuestion(data.question);
+    const answer = askQuestion();
+
+    if (game.convertUserAnswer(answer) !== data.correctAnswer) {
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${data.correctAnswer}".Let's try again, ${name}!`);
+      return false;
+    }
+    console.log('Correct!');
+    return iter(count + 1);
+  };
+  return iter(0);
+};
