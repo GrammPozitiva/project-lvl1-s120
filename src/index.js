@@ -1,24 +1,18 @@
 import readlineSync from 'readline-sync';
 
 
-export const askName = () => readlineSync.question('May I have your name? ');
+const askName = () => readlineSync.question('May I have your name? ');
 
-export const showGreet = (name) => {
+const showGreet = (name) => {
   console.log(`Hello, ${name}!`);
 };
-export const showRulesGame = (rules) => {
-  console.log(`${rules}`);
-};
 
-
-export const generateNumber = () => Math.floor(Math.random() * 30);
-
-export const showQuestion = (question) => {
+const showQuestion = (question) => {
   console.log(`Question:  ${question}`);
 };
-export const askQuestion = () => readlineSync.question('Your answer: ');
+const askQuestion = () => readlineSync.question('Your answer: ');
 
-export const runGame = (game) => {
+const runGame = (game) => {
   console.log('Welcome to the Brain Games!');
   console.log(game.rules);
   const name = askName();
@@ -42,3 +36,4 @@ export const runGame = (game) => {
   };
   return iter(0);
 };
+export default runGame;

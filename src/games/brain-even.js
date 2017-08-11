@@ -1,6 +1,7 @@
-import * as brainGame from '..';
+import engine from '..';
+import generateNumber from '../utils';
 
-export const rules = 'Answer "yes" if number even otherwise answer "no"';
+const rules = 'Answer "yes" if number even otherwise answer "no"';
 
 const isEven = number => number % 2 === 0;
 
@@ -9,8 +10,8 @@ const correctAnswer = (number) => {
   return answer;
 };
 
-export const getStepData = () => {
-  const number = brainGame.generateNumber();
+const getStepData = () => {
+  const number = generateNumber();
   return {
     correctAnswer: correctAnswer(number),
     question: `${number}`,
@@ -18,4 +19,13 @@ export const getStepData = () => {
 };
 
 
-export const convertUserAnswer = answer => answer;
+const convertUserAnswer = answer => answer;
+
+const run = () => {
+  engine({
+    rules,
+    getStepData,
+    convertUserAnswer,
+  });
+};
+export default run;

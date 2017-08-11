@@ -1,15 +1,16 @@
-import * as brainGame from '..';
+import engine from '..';
+import generateNumber from '../utils';
 
-export const rules = 'Find the greatest common divisor of given numbers.';
+const rules = 'Find the greatest common divisor of given numbers.';
 
 const gcd = (number1, number2) => {
   const result = number2 ? gcd(number2, number1 % number2) : number1;
   return result;
 };
 
-export const getStepData = () => {
-  const number1 = brainGame.generateNumber();
-  const number2 = brainGame.generateNumber();
+const getStepData = () => {
+  const number1 = generateNumber();
+  const number2 = generateNumber();
 
   return {
     correctAnswer: gcd(number1, number2),
@@ -17,4 +18,13 @@ export const getStepData = () => {
   };
 };
 
-export const convertUserAnswer = answer => Number(answer);
+const convertUserAnswer = answer => Number(answer);
+
+const run = () => {
+  engine({
+    rules,
+    getStepData,
+    convertUserAnswer,
+  });
+};
+export default run;

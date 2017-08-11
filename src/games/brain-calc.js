@@ -1,6 +1,7 @@
-import * as brainGame from '..';
+import engine from '..';
+import generateNumber from '../utils';
 
-export const rules = 'What is the result of the expression?';
+const rules = 'What is the result of the expression?';
 
 const generateOperation = () => {
   let operation = 0;
@@ -26,9 +27,9 @@ const calc = (number1, number2, operation) => {
   return result;
 };
 
-export const getStepData = () => {
-  const number1 = brainGame.generateNumber();
-  const number2 = brainGame.generateNumber();
+const getStepData = () => {
+  const number1 = generateNumber();
+  const number2 = generateNumber();
   const operation = generateOperation();
   return {
     correctAnswer: calc(number1, number2, operation),
@@ -36,4 +37,13 @@ export const getStepData = () => {
   };
 };
 
-export const convertUserAnswer = answer => Number(answer);
+const convertUserAnswer = answer => Number(answer);
+
+const run = () => {
+  engine({
+    rules,
+    getStepData,
+    convertUserAnswer,
+  });
+};
+export default run;
