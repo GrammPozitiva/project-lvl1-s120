@@ -1,6 +1,6 @@
 {
   "name": "brain-games-grammpozitiva",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Set of mini games from the console",
   "main": "project/src/bin/brain-games.js",
   "scripts": {

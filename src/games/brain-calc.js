@@ -2,45 +2,35 @@ import engine from '..';
 import generateNumber from '../utils';
 
 const rules = 'What is the result of the expression?';
+const operations = ['+', '-', '*'];
 
-const generateOperation = () => {
-  let operation = 0;
-  const arrayOperations = ['+', '-', '*'];
-  operation = Math.floor(Math.random() * arrayOperations.length);
-  return arrayOperations[operation];
-};
-
-const calc = (number1, number2, operation) => {
-  let result = 0;
-  switch (operation) {
-    case '*': result = number1 * number2;
-      break;
-
-    case '+': result = number1 + number2;
-      break;
-
-    case '-': result = number1 - number2;
-      break;
-
-    default: result = 0;
-  }
-  return result;
-};
+const generateOperation = arrayOperat => arrayOperat[generateNumber(0, arrayOperat.length - 1)];
 
 const getStepData = () => {
   const number1 = generateNumber();
   const number2 = generateNumber();
-  const operation = generateOperation();
-  return {
-    correctAnswer: `${calc(number1, number2, operation)}`,
+  const operation = generateOperation(operations);
+
+  const data = {
+    correctAnswer: 0,
     question: `${number1} ${operation} ${number2}`,
   };
+
+  switch (operation) {
+    case '*':
+      data.correctAnswer = `${number1 * number2}`;
+      break;
+    case '-':
+      data.correctAnswer = `${number1 - number2}`;
+      break;
+
+    default: data.correctAnswer = `${number1 + number2}`;
+  }
+
+  return data;
 };
 
 const run = () => {
-  engine({
-    rules,
-    getStepData,
-  });
+  engine(rules, getStepData);
 };
 export default run;

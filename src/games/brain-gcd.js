@@ -19,9 +19,6 @@ const getStepData = () => {
 };
 
 const run = () => {
-  engine({
-    rules,
-    getStepData,
-  });
+  engine(rules, getStepData);
 };
 export default run;

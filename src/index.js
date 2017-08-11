@@ -12,9 +12,9 @@ const showQuestion = (question) => {
 };
 const askQuestion = () => readlineSync.question('Your answer: ');
 
-const runGame = (game) => {
+const runGame = (rules, getStep) => {
   console.log('Welcome to the Brain Games!');
-  console.log(game.rules);
+  console.log(rules);
   const name = askName();
   showGreet(name);
 
@@ -23,12 +23,12 @@ const runGame = (game) => {
       console.log(`Congratulations, ${name}!`);
       return true;
     }
-    const data = game.getStepData();
-    showQuestion(data.question);
+    const step = getStep();
+    showQuestion(step.question);
     const answer = askQuestion();
 
-    if (answer !== data.correctAnswer) {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${data.correctAnswer}".Let's try again, ${name}!`);
+    if (answer !== step.correctAnswer) {
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${step.correctAnswer}".Let's try again, ${name}!`);
       return false;
     }
     console.log('Correct!');
