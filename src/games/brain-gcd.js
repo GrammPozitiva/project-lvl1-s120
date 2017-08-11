@@ -13,18 +13,15 @@ const getStepData = () => {
   const number2 = generateNumber();
 
   return {
-    correctAnswer: gcd(number1, number2),
+    correctAnswer: `${gcd(number1, number2)}`,
     question: `${number1} ${number2}`,
   };
 };
-
-const convertUserAnswer = answer => Number(answer);
 
 const run = () => {
   engine({
     rules,
     getStepData,
-    convertUserAnswer,
   });
 };
 export default run;

@@ -32,18 +32,15 @@ const getStepData = () => {
   const number2 = generateNumber();
   const operation = generateOperation();
   return {
-    correctAnswer: calc(number1, number2, operation),
+    correctAnswer: `${calc(number1, number2, operation)}`,
     question: `${number1} ${operation} ${number2}`,
   };
 };
-
-const convertUserAnswer = answer => Number(answer);
 
 const run = () => {
   engine({
     rules,
     getStepData,
-    convertUserAnswer,
   });
 };
 export default run;

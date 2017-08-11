@@ -18,14 +18,10 @@ const getStepData = () => {
   };
 };
 
-
-const convertUserAnswer = answer => answer;
-
 const run = () => {
   engine({
     rules,
     getStepData,
-    convertUserAnswer,
   });
 };
 export default run;

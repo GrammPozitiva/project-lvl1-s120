@@ -27,7 +27,7 @@ const runGame = (game) => {
     showQuestion(data.question);
     const answer = askQuestion();
 
-    if (game.convertUserAnswer(answer) !== data.correctAnswer) {
+    if (answer !== data.correctAnswer) {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${data.correctAnswer}".Let's try again, ${name}!`);
       return false;
     }
