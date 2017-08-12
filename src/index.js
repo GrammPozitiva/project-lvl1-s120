@@ -1,10 +1,8 @@
 import readlineSync from 'readline-sync';
 
-let iterations = 3;
+const iterations = 3;
 
-const iterateGameSteps = (getStep) => {
-  iterations -= 1;
-
+const iterateGameSteps = (getStep, i) => {
   const step = getStep();
   console.log(`Question:  ${step.question}`);
   const answer = readlineSync.question('Your answer: ');
@@ -16,11 +14,11 @@ const iterateGameSteps = (getStep) => {
 
   console.log('Correct!');
 
-  if (iterations === 0) {
+  if (i === 1) {
     return true;
   }
 
-  return iterateGameSteps(getStep);
+  return iterateGameSteps(getStep, i - 1);
 };
 const runGame = (rules, getStep) => {
   console.log('Welcome to the Brain Games!');
@@ -29,7 +27,7 @@ const runGame = (rules, getStep) => {
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
 
-  const result = iterateGameSteps(getStep);
+  const result = iterateGameSteps(getStep, iterations);
 
   if (result) {
     console.log(`Congratulations, ${name}!`);
