@@ -6,9 +6,11 @@ const rules = 'Answer "yes" if number prime otherwise answer "no"';
 const isPrime = (number) => {
   if (number < 2) {
     return false;
+  } else if (number === 2) {
+    return true;
   }
 
-  for (let i = 3; i <= number / 2; i += 1) {
+  for (let i = 2; i <= number / 2; i += 1) {
     if (number % i === 0) {
       return false;
     }
