@@ -30,7 +30,6 @@ const getStepData = () => {
   return data;
 };
 
-const run = () => {
-  engine(rules, getStepData);
-};
+const run = () => engine(rules, getStepData);
+
 export default run;

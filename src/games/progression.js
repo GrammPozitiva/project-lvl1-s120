@@ -2,13 +2,15 @@ import engine from '..';
 import generateNumber from '../utils';
 
 const rules = 'What number is missing in this progression?';
-const formArray = (diapozoneStart, progression) => {
+const makeArray = (start, step) => {
   const arr = [];
-  let number = diapozoneStart;
+  let number = start;
+
   for (let i = 0; i < 10; i += 1) {
     arr.push(number);
-    number += progression;
+    number += step;
   }
+
   return arr;
 };
 const getCorrectAnswer = arr => arr[generateNumber(2, 8)];
@@ -19,20 +21,18 @@ const getQuestion = (arr, x) => {
       return '..';
     }
     return el;
-  }).join(' ');
+  });
   return question;
 };
 const getStepData = () => {
-  const formaleteArr = formArray(generateNumber(1, 50), generateNumber(1, 10));
-  const correct = getCorrectAnswer(formaleteArr);
-  const inputQuestion = getQuestion(formaleteArr, correct);
+  const arr = makeArray(generateNumber(1, 50), generateNumber(1, 10));
+  const correct = getCorrectAnswer(arr);
   return {
     correctAnswer: `${correct}`,
-    question: inputQuestion,
+    question: getQuestion(arr, correct).join(' '),
   };
 };
 
-const run = () => {
-  engine(rules, getStepData);
-};
+const run = () => engine(rules, getStepData);
+
 export default run;

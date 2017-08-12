@@ -17,18 +17,16 @@ const balance = (number) => {
 
     return acc;
   };
-  return iter(`${number}`.split('')).join('');
+  return Number(iter(`${number}`.split('')).join(''));
 };
 
 const getStepData = () => {
   const number = generateNumber(100, 5000);
   return {
-    correctAnswer: balance(number),
+    correctAnswer: `${balance(number)}`,
     question: `${number}`,
   };
 };
 
-const run = () => {
-  engine(rules, getStepData);
-};
+const run = () => engine(rules, getStepData);
 export default run;
